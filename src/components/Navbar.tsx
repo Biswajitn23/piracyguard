@@ -22,8 +22,6 @@ const Navbar: React.FC = () => {
   }, []);
 
   const handleLogin = () => {
-    // For now, just navigate to a placeholder login page
-    // In a real app, this would open a login modal or redirect to a login page
     navigate('/login');
   };
 
@@ -186,13 +184,19 @@ const Navbar: React.FC = () => {
             <Button 
               variant="outline" 
               className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
-              onClick={handleLogin}
+              onClick={() => {
+                setIsMenuOpen(false);
+                handleLogin();
+              }}
             >
               Login
             </Button>
             <Button 
               className="text-sm font-medium bg-piracy-600 hover:bg-piracy-700 dark:bg-piracy-600 dark:hover:bg-piracy-500 text-white"
-              onClick={handleGetStarted}
+              onClick={() => {
+                setIsMenuOpen(false);
+                handleGetStarted();
+              }}
             >
               Get Started
             </Button>

@@ -8,6 +8,9 @@ import ThemeProvider from "./components/ThemeProvider";
 import Index from "./pages/Index";
 import DashboardPage from "./pages/Dashboard";
 import Contact from "./pages/Contact";
+import Features from "./pages/Features";
+import About from "./pages/About";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +26,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
