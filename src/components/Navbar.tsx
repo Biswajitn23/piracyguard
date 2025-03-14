@@ -59,6 +59,12 @@ const Navbar: React.FC = () => {
             Dashboard
           </Link>
           <Link 
+            to="/contact" 
+            className="text-sm font-medium text-gray-700 hover:text-piracy-600 transition-colors"
+          >
+            Contact
+          </Link>
+          <Link 
             to="/about" 
             className="text-sm font-medium text-gray-700 hover:text-piracy-600 transition-colors"
           >
@@ -117,6 +123,13 @@ const Navbar: React.FC = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Dashboard
+          </Link>
+          <Link 
+            to="/contact" 
+            className="text-sm font-medium text-gray-700 hover:text-piracy-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
           </Link>
           <Link 
             to="/about" 
