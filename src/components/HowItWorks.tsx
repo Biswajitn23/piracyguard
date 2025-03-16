@@ -7,7 +7,7 @@ const HowItWorks: React.FC = () => {
   const { ref, isInView } = useInView();
 
   return (
-    <section ref={ref} className="py-20 bg-gray-900" id="how-it-works">
+    <section ref={ref} className="py-20 bg-black" id="how-it-works">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div 

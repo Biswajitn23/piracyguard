@@ -37,32 +37,32 @@
   }
 
   .dark {
-    --background: 260 30% 10%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;  /* Full black background */
+    --foreground: 0 0% 100%; /* Pure white text */
 
-    --card: 260 30% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 3%;  /* Nearly black card background */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 260 30% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
 
     --primary: 270 100% 70%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 30% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 5%;  /* Very dark secondary */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 260 30% 15%;
+    --muted: 0 0% 10%;  /* Very dark muted */
     --muted-foreground: 260 20% 70%;
 
-    --accent: 260 30% 15%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 0% 15%;  /* Dark accent with slight contrast */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 260 30% 20%;
-    --input: 260 30% 20%;
+    --border: 0 0% 20%;  /* Dark borders */
+    --input: 0 0% 20%;
     --ring: 270 70% 70%;
   }
 }
@@ -84,11 +84,11 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-lg dark:bg-black/20 dark:border-white/10;
+    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-lg dark:bg-black/40 dark:border-white/10;
   }
   
   .glass-dark {
-    @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-lg;
+    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-lg;
   }
 
   .text-balance {
@@ -116,7 +116,7 @@
   }
 
   .neo-blur {
-    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+    @apply backdrop-blur-2xl bg-black/70 border border-white/10;
   }
   
   .text-gradient {
@@ -131,7 +131,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
+  @apply bg-gray-100 dark:bg-black;
   border-radius: 5px;
 }
 
@@ -156,7 +156,7 @@ html {
 }
 
 .dark * {
-  scrollbar-color: theme('colors.gray.700') theme('colors.gray.800');
+  scrollbar-color: theme('colors.gray.700') theme('colors.black');
 }
 
 /* Blur load for images */
