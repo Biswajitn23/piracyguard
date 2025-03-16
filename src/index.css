@@ -37,33 +37,33 @@
   }
 
   .dark {
-    --background: 0 0% 0%;  /* Full black background */
+    --background: 0 0% 0%;  /* Pure black background */
     --foreground: 0 0% 100%; /* Pure white text */
 
-    --card: 0 0% 3%;  /* Nearly black card background */
+    --card: 0 0% 1%;  /* Nearly black card background */
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 3%;
+    --popover: 0 0% 1%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 270 100% 70%;
+    --primary: 270 100% 70%;  /* Vivid purple for primary elements */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 5%;  /* Very dark secondary */
+    --secondary: 0 0% 4%;  /* Very dark secondary */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 10%;  /* Very dark muted */
-    --muted-foreground: 260 20% 70%;
+    --muted: 0 0% 8%;  /* Very dark muted */
+    --muted-foreground: 270 20% 80%; /* Light purple for muted text */
 
-    --accent: 0 0% 15%;  /* Dark accent with slight contrast */
+    --accent: 270 70% 50%;  /* Accent purple */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;  /* Dark borders */
-    --input: 0 0% 20%;
-    --ring: 270 70% 70%;
+    --border: 0 0% 15%;  /* Very dark borders */
+    --input: 0 0% 15%;
+    --ring: 270 70% 60%;  /* Purple ring */
   }
 }
 
@@ -122,6 +122,10 @@
   .text-gradient {
     @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
   }
+  
+  .purple-gradient {
+    @apply bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 bg-clip-text text-transparent;
+  }
 }
 
 /* Custom scrollbar */
@@ -136,12 +140,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-700;
+  @apply bg-gray-300 dark:bg-purple-900;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-600;
+  @apply bg-gray-400 dark:bg-purple-800;
 }
 
 /* Smooth scroll */
@@ -156,7 +160,7 @@ html {
 }
 
 .dark * {
-  scrollbar-color: theme('colors.gray.700') theme('colors.black');
+  scrollbar-color: theme('colors.purple.900') theme('colors.black');
 }
 
 /* Blur load for images */
