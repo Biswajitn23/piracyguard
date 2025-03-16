@@ -95,7 +95,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="pt-16 pb-12 bg-gray-50 min-h-screen">
+      <div className="pt-16 pb-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div className="container mx-auto px-4 md:px-6 pt-8">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-1">Piracy Protection Dashboard</h1>
