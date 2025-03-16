@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Features from '../components/Features';
 import HowItWorks from '../components/HowItWorks';
 import Dashboard from '../components/Dashboard';
+import EnterpriseSolutions from '../components/EnterpriseSolutions';
 
 const Index: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Index: React.FC = () => {
       <Hero />
       <Features />
       <HowItWorks />
+      <EnterpriseSolutions />
       <Dashboard />
     </MainLayout>
   );
