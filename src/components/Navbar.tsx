@@ -1,16 +1,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Shield, Menu, X, Moon, Sun } from 'lucide-react';
+import { Shield, Menu, X, Moon, Sun, LogOut } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 import { useTheme } from './ThemeProvider';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  const { session, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +28,11 @@ const Navbar: React.FC = () => {
   };
 
   const handleGetStarted = () => {
-    navigate('/dashboard');
+    if (session) {
+      navigate('/dashboard');
+    } else {
+      navigate('/login');
+    }
   };
 
   const toggleTheme = () => {
@@ -67,12 +73,14 @@ const Navbar: React.FC = () => {
           >
             Features
           </Link>
-          <Link 
-            to="/dashboard" 
-            className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
-          >
-            Dashboard
-          </Link>
+          {session && (
+            <Link 
+              to="/dashboard" 
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
+            >
+              Dashboard
+            </Link>
+          )}
           <Link 
             to="/contact" 
             className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
@@ -88,18 +96,29 @@ const Navbar: React.FC = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button 
-            variant="outline" 
-            className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
-            onClick={handleLogin}
-          >
-            Login
-          </Button>
+          {session ? (
+            <Button 
+              variant="outline" 
+              className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
+              onClick={signOut}
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
+          ) : (
+            <Button 
+              variant="outline" 
+              className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
+              onClick={handleLogin}
+            >
+              Login
+            </Button>
+          )}
           <Button 
             className="text-sm font-medium bg-piracy-600 hover:bg-piracy-700 dark:bg-piracy-600 dark:hover:bg-piracy-500 text-white"
             onClick={handleGetStarted}
           >
-            Get Started
+            {session ? 'Dashboard' : 'Get Started'}
           </Button>
           <Button
             variant="ghost"
@@ -159,13 +178,15 @@ const Navbar: React.FC = () => {
           >
             Features
           </Link>
-          <Link 
-            to="/dashboard" 
-            className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Dashboard
-          </Link>
+          {session && (
+            <Link 
+              to="/dashboard" 
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
+          )}
           <Link 
             to="/contact" 
             className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-piracy-600 dark:hover:text-piracy-400 transition-colors"
@@ -181,16 +202,30 @@ const Navbar: React.FC = () => {
             About
           </Link>
           <div className="flex flex-col space-y-2 pt-2 border-t dark:border-gray-800 border-gray-200">
-            <Button 
-              variant="outline" 
-              className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
-              onClick={() => {
-                setIsMenuOpen(false);
-                handleLogin();
-              }}
-            >
-              Login
-            </Button>
+            {session ? (
+              <Button 
+                variant="outline" 
+                className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  signOut();
+                }}
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+              </Button>
+            ) : (
+              <Button 
+                variant="outline" 
+                className="text-sm font-medium bg-transparent dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border dark:border-gray-700 border-gray-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleLogin();
+                }}
+              >
+                Login
+              </Button>
+            )}
             <Button 
               className="text-sm font-medium bg-piracy-600 hover:bg-piracy-700 dark:bg-piracy-600 dark:hover:bg-piracy-500 text-white"
               onClick={() => {
@@ -198,7 +233,7 @@ const Navbar: React.FC = () => {
                 handleGetStarted();
               }}
             >
-              Get Started
+              {session ? 'Dashboard' : 'Get Started'}
             </Button>
           </div>
         </nav>

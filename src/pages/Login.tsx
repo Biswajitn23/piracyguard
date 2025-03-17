@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
 import MainLayout from '../layouts/MainLayout';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState('');
@@ -18,41 +19,35 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { signIn, signUp, session } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Redirect if already logged in
+  useEffect(() => {
+    if (session) {
+      navigate('/dashboard');
+    }
+  }, [session, navigate]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate login process
-    setTimeout(() => {
+    try {
+      await signIn(loginEmail, loginPassword);
+    } finally {
       setIsLoading(false);
-      
-      // Successful login demonstration
-      toast({
-        title: "Login successful",
-        description: "Welcome back to PiracyGuard!",
-      });
-      
-      navigate('/dashboard');
-    }, 1500);
+    }
   };
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate signup process
-    setTimeout(() => {
+    try {
+      await signUp(signupEmail, signupPassword, signupName);
+    } finally {
       setIsLoading(false);
-      
-      // Successful signup demonstration
-      toast({
-        title: "Account created",
-        description: "Your PiracyGuard account has been created successfully.",
-      });
-      
-      navigate('/dashboard');
-    }, 1500);
+    }
   };
 
   return (
