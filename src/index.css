@@ -121,8 +121,12 @@
   }
 
   .neo-blur {
-    @apply backdrop-blur-2xl bg-black/70 border border-white/10 dark:backdrop-blur-2xl dark:bg-black/70 dark:border-white/10 
-    light:backdrop-blur-2xl light:bg-white/70 light:border-gray-300/30;
+    @apply backdrop-blur-2xl bg-black/70 border border-white/10 dark:backdrop-blur-2xl dark:bg-black/70 dark:border-white/10;
+  }
+  
+  /* Light mode specific version of neo-blur */
+  .light .neo-blur {
+    @apply backdrop-blur-2xl bg-white/70 border-gray-300/30;
   }
   
   .text-gradient {
