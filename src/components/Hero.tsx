@@ -4,9 +4,22 @@ import { Button } from "@/components/ui/button";
 import { useInView } from '../utils/animations';
 import { Shield, Lock, Eye, Database } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const { ref, isInView } = useInView();
+  const navigate = useNavigate();
+
+  const handleStartProtection = () => {
+    navigate('/dashboard');
+  };
+
+  const scrollToHowItWorks = () => {
+    const howItWorksSection = document.getElementById('how-it-works');
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-black">
@@ -60,6 +73,7 @@ const Hero: React.FC = () => {
             <Button 
               size="lg" 
               className="bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl transition-all"
+              onClick={handleStartProtection}
             >
               Start Protection Now
             </Button>
@@ -67,6 +81,7 @@ const Hero: React.FC = () => {
               variant="outline" 
               size="lg" 
               className="border-purple-800 text-white hover:bg-purple-900/30"
+              onClick={scrollToHowItWorks}
             >
               How It Works
             </Button>
