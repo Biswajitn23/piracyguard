@@ -5,39 +5,40 @@
 
 @layer base {
   :root {
-    /* Light mode colors */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light mode colors - pure black and white theme */
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 0%;  /* Pure black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;      /* Pure white cards */
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 270 70% 50%;  /* Purple for primary */
+    --primary: 270 70% 50%;  /* Keeping purple for primary actions */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%; 
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;   /* Very light gray for secondary elements */
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;       /* Very light gray for muted areas */
+    --muted-foreground: 0 0% 40%; /* Dark gray for muted text */
 
-    --accent: 270 70% 50%;  /* Accent purple */
+    --accent: 270 70% 50%;   /* Keeping purple accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 270 70% 50%;  /* Purple ring */
+    --border: 0 0% 90%;      /* Light gray border */
+    --input: 0 0% 90%;
+    --ring: 270 70% 50%;     /* Purple ring */
 
     --radius: 0.5rem;
   }
 
   .dark {
+    /* Keep existing dark mode colors */
     --background: 0 0% 0%;  /* Pure black background */
     --foreground: 0 0% 100%; /* Pure white text */
 
@@ -93,7 +94,7 @@
   }
 
   .glass-light {
-    @apply bg-white/70 backdrop-blur-md border border-gray-200/70 shadow-lg;
+    @apply bg-white/90 backdrop-blur-md border border-gray-200 shadow-lg;
   }
 
   .text-balance {
@@ -126,11 +127,11 @@
   
   /* Light mode specific version of neo-blur */
   .light .neo-blur {
-    @apply backdrop-blur-2xl bg-white/70 border-gray-300/30;
+    @apply backdrop-blur-2xl bg-white/90 border-black/10;
   }
   
   .text-gradient {
-    @apply bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 dark:from-white dark:via-white/90 dark:to-white/70 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-black via-black to-black/90 dark:from-white dark:via-white/90 dark:to-white/70 bg-clip-text text-transparent;
   }
   
   .purple-gradient {
