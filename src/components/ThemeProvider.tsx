@@ -33,8 +33,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Apply theme to document
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }, [theme]);
 
