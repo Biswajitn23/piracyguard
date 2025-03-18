@@ -6,12 +6,14 @@ interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
 export const Heading = ({
   level = 1,
   children,
   className,
+  id,
   ...props
 }: HeadingProps & React.HTMLAttributes<HTMLHeadingElement>) => {
   const HeadingTag = `h${level}` as const;
@@ -29,6 +31,7 @@ export const Heading = ({
         level === 6 && "text-sm md:text-base",
         className
       ),
+      id,
       ...props
     },
     children

@@ -90,6 +90,10 @@
   a {
     @apply text-foreground hover:text-primary transition-colors;
   }
+  
+  button, [role="button"] {
+    @apply cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
 }
 
 @layer utilities {
@@ -144,6 +148,10 @@
   
   .purple-gradient {
     @apply bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 dark:from-purple-600 dark:via-purple-500 dark:to-purple-700 bg-clip-text text-transparent;
+  }
+  
+  .clickable {
+    @apply cursor-pointer hover:brightness-95 active:brightness-90 transition-all;
   }
 }
 
