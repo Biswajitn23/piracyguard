@@ -20,6 +20,11 @@ import ApiStatus from "./pages/ApiStatus";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import Legal from "./pages/Legal";
+import Pricing from "./pages/Pricing";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Cookies from "./pages/Cookies";
+import Security from "./pages/Security";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +42,8 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/features" element={<Features />} />
               <Route path="/about" element={<About />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/security" element={<Security />} />
               
               {/* Support Section Routes */}
               <Route path="/help" element={<Help />} />
@@ -47,6 +54,11 @@ const App = () => (
               <Route path="/careers" element={<Careers />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/legal" element={<Legal />} />
+              
+              {/* Policy pages */}
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/cookies" element={<Cookies />} />
 
               {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>

@@ -13,11 +13,11 @@ export const Heading = ({
   className,
   ...props
 }: HeadingProps) => {
-  // Fix the typing issue by properly declaring the component type
-  const Component = `h${level}` as keyof JSX.IntrinsicElements;
+  // Create a valid HTML heading element
+  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   
   return (
-    <Component
+    <Tag
       className={cn(
         "font-bold tracking-tight",
         level === 1 && "text-3xl md:text-4xl lg:text-5xl",
@@ -31,6 +31,6 @@ export const Heading = ({
       {...props}
     >
       {children}
-    </Component>
+    </Tag>
   );
 };

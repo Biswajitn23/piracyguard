@@ -5,24 +5,24 @@
 
 @layer base {
   :root {
-    /* Light mode colors - pure black and white theme */
+    /* Light mode colors - optimized for text visibility */
     --background: 0 0% 100%; /* Pure white */
-    --foreground: 0 0% 0%;  /* Pure black */
+    --foreground: 0 0% 10%;  /* Near black for better contrast */
 
     --card: 0 0% 100%;      /* Pure white cards */
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 0 0% 10%;
 
     --primary: 270 70% 50%;  /* Keeping purple for primary actions */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;   /* Very light gray for secondary elements */
-    --secondary-foreground: 0 0% 0%;
+    --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 96%;       /* Very light gray for muted areas */
-    --muted-foreground: 0 0% 40%; /* Dark gray for muted text */
+    --muted-foreground: 0 0% 30%; /* Darker gray for muted text for better visibility */
 
     --accent: 270 70% 50%;   /* Keeping purple accent */
     --accent-foreground: 0 0% 100%;
@@ -80,7 +80,15 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
+    @apply tracking-tight text-foreground;
+  }
+
+  p {
+    @apply text-foreground;
+  }
+
+  a {
+    @apply text-foreground hover:text-primary transition-colors;
   }
 }
 
