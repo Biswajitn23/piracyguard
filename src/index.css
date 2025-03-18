@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    /* Light mode colors - optimized for text visibility */
+    /* Improved Light mode colors for text visibility */
     --background: 0 0% 100%; /* Pure white */
-    --foreground: 0 0% 10%;  /* Near black for better contrast */
+    --foreground: 0 0% 5%;   /* Near black for best contrast */
 
-    --card: 0 0% 100%;      /* Pure white cards */
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 100%;       /* Pure white cards */
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 270 70% 50%;  /* Keeping purple for primary actions */
+    --primary: 270 70% 50%;  /* Purple for primary actions */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;   /* Very light gray for secondary elements */
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 0 0% 96%;   /* Light gray for secondary elements */
+    --secondary-foreground: 0 0% 5%;  /* Darker text on secondary elements */
 
-    --muted: 0 0% 96%;       /* Very light gray for muted areas */
-    --muted-foreground: 0 0% 30%; /* Darker gray for muted text for better visibility */
+    --muted: 0 0% 96%;       /* Light gray for muted areas */
+    --muted-foreground: 0 0% 30%; /* Darker gray for muted text */
 
-    --accent: 270 70% 50%;   /* Keeping purple accent */
+    --accent: 270 70% 50%;   /* Purple accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;      /* Light gray border */
-    --input: 0 0% 90%;
+    --border: 0 0% 85%;      /* Darker border for better visibility */
+    --input: 0 0% 85%;
     --ring: 270 70% 50%;     /* Purple ring */
 
     --radius: 0.5rem;
@@ -80,7 +80,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight text-foreground;
+    @apply tracking-tight text-foreground font-bold;
   }
 
   p {

@@ -2,9 +2,10 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
+  className?: string;
 }
 
 export const Heading = ({
@@ -12,12 +13,11 @@ export const Heading = ({
   children,
   className,
   ...props
-}: HeadingProps) => {
-  // Create a valid HTML heading element
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+}: HeadingProps & React.HTMLAttributes<HTMLHeadingElement>) => {
+  const Component = `h${level}` as keyof JSX.IntrinsicElements;
   
   return (
-    <Tag
+    <Component
       className={cn(
         "font-bold tracking-tight",
         level === 1 && "text-3xl md:text-4xl lg:text-5xl",
@@ -31,6 +31,6 @@ export const Heading = ({
       {...props}
     >
       {children}
-    </Tag>
+    </Component>
   );
 };
