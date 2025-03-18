@@ -13,6 +13,7 @@ export const Heading = ({
   className,
   ...props
 }: HeadingProps) => {
+  // Fix the typing issue by properly declaring the component type
   const Component = `h${level}` as keyof JSX.IntrinsicElements;
   
   return (
