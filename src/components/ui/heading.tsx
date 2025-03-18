@@ -14,11 +14,12 @@ export const Heading = ({
   className,
   ...props
 }: HeadingProps & React.HTMLAttributes<HTMLHeadingElement>) => {
-  const Component = `h${level}` as keyof JSX.IntrinsicElements;
+  const HeadingTag = `h${level}` as const;
   
-  return (
-    <Component
-      className={cn(
+  return React.createElement(
+    HeadingTag,
+    {
+      className: cn(
         "font-bold tracking-tight",
         level === 1 && "text-3xl md:text-4xl lg:text-5xl",
         level === 2 && "text-2xl md:text-3xl lg:text-4xl",
@@ -27,10 +28,9 @@ export const Heading = ({
         level === 5 && "text-base md:text-lg",
         level === 6 && "text-sm md:text-base",
         className
-      )}
-      {...props}
-    >
-      {children}
-    </Component>
+      ),
+      ...props
+    },
+    children
   );
 };
