@@ -9,7 +9,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Mail, Send, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -51,37 +51,37 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-piracy-700 to-piracy-500 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Contact Us
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Have questions about our piracy protection services or want to report a case? 
-              Our team is here to help you protect your Disney content from cyberthreats.
+            <p className="text-foreground/80 dark:text-foreground/90 max-w-2xl mx-auto">
+              Have questions about our services or want to get in touch? 
+              Our team is here to help you with any inquiries you might have.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-              <Mail className="mx-auto h-10 w-10 text-piracy-600 mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-              <p className="text-gray-600 text-sm">support@piracyguard.com</p>
+            <div className="bg-card shadow-md rounded-lg p-6 text-center">
+              <Mail className="mx-auto h-10 w-10 text-primary mb-3" />
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Email Us</h3>
+              <p className="text-foreground/80 dark:text-foreground/90 text-sm">nitincmd15@gmail.com</p>
             </div>
             
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-              <User className="mx-auto h-10 w-10 text-piracy-600 mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-              <p className="text-gray-600 text-sm">+1 (888) 123-4567</p>
+            <div className="bg-card shadow-md rounded-lg p-6 text-center">
+              <Phone className="mx-auto h-10 w-10 text-primary mb-3" />
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Call Us</h3>
+              <p className="text-foreground/80 dark:text-foreground/90 text-sm">+91 1234567890</p>
             </div>
             
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-              <Mail className="mx-auto h-10 w-10 text-piracy-600 mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Office</h3>
-              <p className="text-gray-600 text-sm">123 Protection Ave, Burbank, CA 91521</p>
+            <div className="bg-card shadow-md rounded-lg p-6 text-center">
+              <MapPin className="mx-auto h-10 w-10 text-primary mb-3" />
+              <h3 className="font-semibold text-lg mb-2 text-foreground">Office</h3>
+              <p className="text-foreground/80 dark:text-foreground/90 text-sm">Raipur, Chattisgarh</p>
             </div>
           </div>
 
-          <div className="bg-white shadow-md rounded-lg p-8">
-            <h2 className="text-2xl font-semibold mb-6 text-center">Send Us a Message</h2>
+          <div className="bg-card shadow-md rounded-lg p-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-foreground">Send Us a Message</h2>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -91,9 +91,9 @@ const Contact: React.FC = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Name</FormLabel>
+                        <FormLabel className="text-foreground">Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your name" {...field} />
+                          <Input placeholder="Your name" {...field} className="bg-background/50" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -105,9 +105,9 @@ const Contact: React.FC = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className="text-foreground">Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="Your email" {...field} />
+                          <Input type="email" placeholder="Your email" {...field} className="bg-background/50" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -120,9 +120,9 @@ const Contact: React.FC = () => {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Subject</FormLabel>
+                      <FormLabel className="text-foreground">Subject</FormLabel>
                       <FormControl>
-                        <Input placeholder="Message subject" {...field} />
+                        <Input placeholder="Message subject" {...field} className="bg-background/50" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -134,11 +134,11 @@ const Contact: React.FC = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Message</FormLabel>
+                      <FormLabel className="text-foreground">Message</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="How can we help you?" 
-                          className="min-h-[120px]" 
+                          className="min-h-[120px] bg-background/50" 
                           {...field} 
                         />
                       </FormControl>
@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
                 />
                 
                 <div className="flex justify-end">
-                  <Button type="submit" className="bg-piracy-600 hover:bg-piracy-700">
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">
                     <Send className="mr-2 h-4 w-4" /> Send Message
                   </Button>
                 </div>
