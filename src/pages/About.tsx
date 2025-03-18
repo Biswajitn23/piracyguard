@@ -1,89 +1,147 @@
-import React from 'react';
-import { Shield, Users, Award, Heart } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import MainLayout from '../layouts/MainLayout';
 
-const About = () => {
+import React from 'react';
+import MainLayout from '../layouts/MainLayout';
+import { Heading } from '@/components/ui/heading';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Shield, Users, Target, Heart, Zap, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const About: React.FC = () => {
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">About PiracyGuard</h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Protecting digital content creators and businesses from piracy since 2018.
+      <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <Heading level={1} className="font-bold mb-4 text-foreground">
+              About PiracyGuard
+            </Heading>
+            <p className="text-foreground/80 max-w-2xl mx-auto">
+              Leading the way in protecting digital content from piracy, enabling creators to securely distribute their work.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Our Mission</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                At PiracyGuard, we believe that content creators deserve to be protected. Our mission is to provide powerful, 
-                accessible tools that help creators and businesses safeguard their intellectual property in an increasingly 
-                digital world.
+              <Heading level={2} className="text-2xl font-semibold mb-4 text-foreground">
+                Our Mission
+              </Heading>
+              <p className="text-foreground/80 mb-4">
+                At PiracyGuard, we're committed to protecting the intellectual property of content creators. 
+                We believe that creators should be able to share their work without fear of piracy or unauthorized distribution.
               </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                We're committed to staying ahead of piracy trends and technologies, ensuring that our clients always have the 
-                most effective protection available. Through innovation, dedication, and expertise, we aim to create a fairer 
-                digital ecosystem where creators can thrive.
+              <p className="text-foreground/80 mb-4">
+                Founded in 2020, we've quickly become the leading provider of content protection services for Disney, 
+                helping to safeguard their valuable content across digital platforms worldwide.
               </p>
+              <div className="flex items-center space-x-4 mt-6">
+                <Button asChild>
+                  <Link to="/contact">Contact Us</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link to="/features">Explore Features</Link>
+                </Button>
+              </div>
             </div>
-            <div className="flex items-center justify-center">
-              <Shield className="h-56 w-56 text-piracy-600 dark:text-piracy-400" />
+            <div className="bg-card rounded-lg shadow-sm p-6">
+              <div className="flex items-center mb-4">
+                <Shield className="h-10 w-10 text-piracy-600 mr-4" />
+                <h3 className="text-lg font-semibold text-foreground">Why Choose PiracyGuard?</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <Zap className="h-5 w-5 text-piracy-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/80">
+                    Cutting-edge technology for detection and protection
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Globe className="h-5 w-5 text-piracy-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/80">
+                    Global coverage with 24/7 monitoring
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Users className="h-5 w-5 text-piracy-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/80">
+                    Experienced team of copyright and anti-piracy experts
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Target className="h-5 w-5 text-piracy-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/80">
+                    Precision targeting with minimal false positives
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Heart className="h-5 w-5 text-piracy-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/80">
+                    Trusted by major content creators and distributors
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <Separator className="my-16" />
-
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Why Choose Us</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="bg-white dark:bg-gray-800">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <Users className="h-12 w-12 text-piracy-600 dark:text-piracy-400" />
+          <Heading level={2} className="text-2xl font-semibold mb-6 text-center text-foreground">
+            Our Values
+          </Heading>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+            <Card className="shadow-sm">
+              <CardContent className="pt-6">
+                <div className="flex justify-center mb-4">
+                  <div className="h-12 w-12 bg-piracy-100 dark:bg-piracy-900 rounded-full flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-piracy-600" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Expert Team</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Our team consists of cybersecurity experts, legal professionals, and technology innovators working together to protect your content.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white dark:bg-gray-800">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <Award className="h-12 w-12 text-piracy-600 dark:text-piracy-400" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-center text-foreground">Protection</h3>
+                <p className="text-foreground/80 text-center">
+                  We're committed to safeguarding creative works and intellectual property.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="shadow-sm">
+              <CardContent className="pt-6">
+                <div className="flex justify-center mb-4">
+                  <div className="h-12 w-12 bg-piracy-100 dark:bg-piracy-900 rounded-full flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-piracy-600" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Industry Leading</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Recognized as an industry leader with multiple awards for our innovative anti-piracy solutions.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white dark:bg-gray-800">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <Heart className="h-12 w-12 text-piracy-600 dark:text-piracy-400" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-center text-foreground">Innovation</h3>
+                <p className="text-foreground/80 text-center">
+                  We continuously evolve our technology to stay ahead of piracy threats.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="shadow-sm">
+              <CardContent className="pt-6">
+                <div className="flex justify-center mb-4">
+                  <div className="h-12 w-12 bg-piracy-100 dark:bg-piracy-900 rounded-full flex items-center justify-center">
+                    <Users className="h-6 w-6 text-piracy-600" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Client Focused</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    We prioritize our clients' needs with dedicated support and customized protection strategies.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-center text-foreground">Community</h3>
+                <p className="text-foreground/80 text-center">
+                  We support the creative community and fight for fair compensation.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Join Our Mission</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-3xl mx-auto">
-              Ready to protect your content and take control of your digital assets? Join thousands of creators and businesses who trust PiracyGuard.
+          <div className="bg-card rounded-lg shadow-sm p-8 text-center">
+            <Heading level={2} className="text-2xl font-semibold mb-4 text-foreground">
+              Join Our Team
+            </Heading>
+            <p className="text-foreground/80 max-w-2xl mx-auto mb-6">
+              We're always looking for talented individuals who are passionate about protecting digital content.
+              Check out our open positions and become part of our mission.
             </p>
-            <button className="bg-piracy-600 hover:bg-piracy-700 text-white font-bold py-3 px-6 rounded-md transition-colors">
-              Get Started Today
-            </button>
+            <Button asChild>
+              <Link to="/careers">View Careers</Link>
+            </Button>
           </div>
         </div>
       </div>

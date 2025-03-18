@@ -14,6 +14,12 @@ import Features from "./pages/Features";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Help from "./pages/Help";
+import Documentation from "./pages/Documentation";
+import ApiStatus from "./pages/ApiStatus";
+import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
+import Legal from "./pages/Legal";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +37,16 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/features" element={<Features />} />
               <Route path="/about" element={<About />} />
+              
+              {/* Support Section Routes */}
+              <Route path="/help" element={<Help />} />
+              <Route path="/documentation" element={<Documentation />} />
+              <Route path="/api" element={<ApiStatus />} />
+              
+              {/* Company Section Routes */}
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/legal" element={<Legal />} />
 
               {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>
