@@ -12,6 +12,14 @@ import {
   Clock,
   BarChart3
 } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const Dashboard: React.FC = () => {
   const { ref, isInView } = useInView();
@@ -130,39 +138,41 @@ const Dashboard: React.FC = () => {
             </div>
             
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content Title</th>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Platform</th>
-                    <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>ID</TableHead>
+                    <TableHead>Content Title</TableHead>
+                    <TableHead>Platform</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {recentCases.map((item, index) => (
-                    <tr key={index} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.id}</td>
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{item.title}</td>
-                      <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{item.platform}</td>
-                      <td className="px-3 py-4 whitespace-nowrap">
+                    <TableRow key={index} className="hover:bg-gray-50 transition-colors">
+                      <TableCell className="font-medium">{item.id}</TableCell>
+                      <TableCell>{item.title}</TableCell>
+                      <TableCell>{item.platform}</TableCell>
+                      <TableCell>
                         <span className={`px-2 py-1 text-xs rounded-full ${item.statusColor}`}>
                           {item.status}
                         </span>
-                      </td>
-                    </tr>
+                      </TableCell>
+                    </TableRow>
                   ))}
-                </tbody>
-              </table>
+                </TableBody>
+              </Table>
             </div>
           </div>
           
           <div className="border-t border-gray-200 px-6 py-4 bg-gray-50">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-500">Showing 4 of 128 detections</span>
-              <Button variant="outline" size="sm" className="text-xs">
-                View All Detections
-                <ChevronRight className="ml-1 h-3 w-3" />
+              <span className="text-sm text-gray-500">Showing 4 of 145 detections</span>
+              <Button variant="outline" size="sm" className="text-xs" asChild>
+                <Link to="/dashboard">
+                  View All Detections
+                  <ChevronRight className="ml-1 h-3 w-3" />
+                </Link>
               </Button>
             </div>
           </div>
