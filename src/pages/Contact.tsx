@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -33,17 +34,36 @@ const Contact: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     console.log('Form submitted:', data);
     
-    // In a real app, you'd send this data to your backend
-    // For now, we'll just show a success toast
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    
-    form.reset();
+    try {
+      // Call the Supabase Edge Function to send the email
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message
+        }
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again later or contact us directly via email.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -64,7 +84,8 @@ const Contact: React.FC = () => {
             <div className="bg-card shadow-md rounded-lg p-6 text-center">
               <Mail className="mx-auto h-10 w-10 text-primary mb-3" />
               <h3 className="font-semibold text-lg mb-2 text-foreground">Email Us</h3>
-              <p className="text-foreground/80 dark:text-foreground/90 text-sm">nitincmd15@gmail.com</p>
+              <p className="text-foreground/80 dark:text-foreground/90 text-sm mb-2">nitincmd15@gmail.com</p>
+              <p className="text-foreground/80 dark:text-foreground/90 text-sm">nbiswajit978@gmail.com</p>
             </div>
             
             <div className="bg-card shadow-md rounded-lg p-6 text-center">
