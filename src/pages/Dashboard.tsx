@@ -218,13 +218,13 @@ const DashboardPage: React.FC = () => {
       <div className="pt-16 pb-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div className="container mx-auto px-4 md:px-6 pt-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-1">Piracy Protection Dashboard</h1>
-            <p className="text-gray-600">Monitor and manage content piracy detection and removal</p>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Piracy Protection Dashboard</h1>
+            <p className="text-gray-600 dark:text-gray-300">Monitor and manage content piracy detection and removal</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
                 <div className={`px-6 py-4 ${stat.color}`}>
                   <div className="flex justify-between items-center">
                     <div className="bg-white/20 rounded-full p-2">
@@ -239,16 +239,16 @@ const DashboardPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="px-6 py-4">
-                  <p className="text-sm text-gray-500">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mb-8">
-            <div className="border-b border-gray-200 px-6 py-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h2 className="text-lg font-semibold text-gray-900">Recent Piracy Detections</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden mb-8">
+            <div className="border-b border-gray-200 dark:border-gray-700 px-6 py-4 bg-gray-50 dark:bg-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Piracy Detections</h2>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <div className="relative w-full sm:w-64">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -256,7 +256,7 @@ const DashboardPage: React.FC = () => {
                   </div>
                   <Input
                     type="search"
-                    className="pl-10 pr-4 py-2 h-9 border border-gray-300 rounded-md text-sm w-full"
+                    className="pl-10 pr-4 py-2 h-9 border border-gray-300 dark:border-gray-600 rounded-md text-sm w-full"
                     placeholder="Search detections..."
                     value={searchQuery}
                     onChange={(e) => {
@@ -271,7 +271,7 @@ const DashboardPage: React.FC = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="h-9 px-3 text-gray-700 border-gray-300"
+                      className="h-9 px-3 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600"
                     >
                       <Filter className="h-4 w-4 mr-2" />
                       Filters
@@ -279,10 +279,10 @@ const DashboardPage: React.FC = () => {
                   </PopoverTrigger>
                   <PopoverContent className="w-80 p-4">
                     <div className="space-y-4">
-                      <h4 className="font-medium text-sm">Filter Detections</h4>
+                      <h4 className="font-medium text-sm dark:text-white">Filter Detections</h4>
                       
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Status</label>
+                        <label className="text-sm font-medium dark:text-gray-300">Status</label>
                         <Select 
                           value={statusFilter} 
                           onValueChange={(value) => {
@@ -304,7 +304,7 @@ const DashboardPage: React.FC = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Platform</label>
+                        <label className="text-sm font-medium dark:text-gray-300">Platform</label>
                         <Select 
                           value={platformFilter} 
                           onValueChange={(value) => {
@@ -349,25 +349,25 @@ const DashboardPage: React.FC = () => {
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Content Title</TableHead>
-                    <TableHead>Platform</TableHead>
-                    <TableHead>Date Detected</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                  <TableRow className="dark:border-gray-700">
+                    <TableHead className="dark:text-gray-300">ID</TableHead>
+                    <TableHead className="dark:text-gray-300">Content Title</TableHead>
+                    <TableHead className="dark:text-gray-300">Platform</TableHead>
+                    <TableHead className="dark:text-gray-300">Date Detected</TableHead>
+                    <TableHead className="dark:text-gray-300">Status</TableHead>
+                    <TableHead className="text-right dark:text-gray-300">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {currentItems.length > 0 ? (
                     currentItems.map((item, index) => (
-                      <TableRow key={index} className="hover:bg-gray-50 transition-colors">
-                        <TableCell className="font-medium">{item.id}</TableCell>
-                        <TableCell>{item.title}</TableCell>
-                        <TableCell>{item.platform}</TableCell>
-                        <TableCell>{item.date}</TableCell>
+                      <TableRow key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:border-gray-700">
+                        <TableCell className="font-medium dark:text-white">{item.id}</TableCell>
+                        <TableCell className="dark:text-gray-300">{item.title}</TableCell>
+                        <TableCell className="dark:text-gray-300">{item.platform}</TableCell>
+                        <TableCell className="dark:text-gray-300">{item.date}</TableCell>
                         <TableCell>
-                          <span className={`px-2 py-1 text-xs rounded-full ${item.statusColor}`}>
+                          <span className={`px-2 py-1 text-xs rounded-full ${item.statusColor} dark:bg-opacity-20`}>
                             {item.status}
                           </span>
                         </TableCell>
@@ -380,7 +380,7 @@ const DashboardPage: React.FC = () => {
                     ))
                   ) : (
                     <TableRow>
-                      <TableCell colSpan={6} className="text-center py-4 text-gray-500">
+                      <TableCell colSpan={6} className="text-center py-4 text-gray-500 dark:text-gray-400">
                         No results found. Try different search or filter criteria.
                       </TableCell>
                     </TableRow>
@@ -389,10 +389,10 @@ const DashboardPage: React.FC = () => {
               </Table>
             </div>
 
-            <div className="border-t border-gray-200 px-6 py-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4 bg-gray-50 dark:bg-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4">
               <div className="flex items-center">
-                <span className="text-sm text-gray-700">
-                  Showing <span className="font-medium">{startIndex + 1}</span> to <span className="font-medium">{endIndex}</span> of <span className="font-medium">{totalItems}</span> results
+                <span className="text-sm text-gray-700 dark:text-gray-300">
+                  Showing <span className="font-medium dark:text-white">{startIndex + 1}</span> to <span className="font-medium dark:text-white">{endIndex}</span> of <span className="font-medium dark:text-white">{totalItems}</span> results
                 </span>
               </div>
               
@@ -446,7 +446,7 @@ const DashboardPage: React.FC = () => {
                     {totalPages > 5 && currentPage < totalPages - 2 && (
                       <>
                         <PaginationItem>
-                          <span className="flex h-9 w-9 items-center justify-center">...</span>
+                          <span className="flex h-9 w-9 items-center justify-center dark:text-gray-400">...</span>
                         </PaginationItem>
                         <PaginationItem>
                           <PaginationLink 
@@ -479,11 +479,11 @@ const DashboardPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md flex items-start mb-8">
-            <AlertCircle className="h-5 w-5 text-yellow-500 mr-3 mt-0.5" />
+          <div className="bg-yellow-50 dark:bg-yellow-900/30 border-l-4 border-yellow-400 dark:border-yellow-600 p-4 rounded-md flex items-start mb-8">
+            <AlertCircle className="h-5 w-5 text-yellow-500 dark:text-yellow-400 mr-3 mt-0.5" />
             <div>
-              <p className="text-sm text-yellow-700 font-medium">System Notice</p>
-              <p className="text-sm text-yellow-600">
+              <p className="text-sm text-yellow-700 dark:text-yellow-300 font-medium">System Notice</p>
+              <p className="text-sm text-yellow-600 dark:text-yellow-400">
                 Our scanning system detected an unusual spike in piracy activity for "The Little Mermaid (2023)". 
                 We recommend reviewing these cases and prioritizing takedowns.
               </p>
