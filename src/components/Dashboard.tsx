@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 bg-white" id="dashboard">
+    <section ref={ref} className="py-20 bg-white dark:bg-black" id="dashboard">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div className="mb-6 md:mb-0">
@@ -78,7 +78,7 @@ const Dashboard: React.FC = () => {
             
             <h2 
               className={cn(
-                "text-3xl md:text-4xl font-bold tracking-tight mb-4 transition-all duration-700 delay-100",
+                "text-3xl md:text-4xl font-bold tracking-tight mb-4 transition-all duration-700 delay-100 dark:text-white",
                 isInView ? "opacity-100" : "opacity-0 translate-y-4"
               )}
             >
@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
             
             <p 
               className={cn(
-                "text-lg text-gray-600 transition-all duration-700 delay-200",
+                "text-lg text-gray-600 dark:text-gray-300 transition-all duration-700 delay-200",
                 isInView ? "opacity-100" : "opacity-0 translate-y-4"
               )}
             >
@@ -111,50 +111,50 @@ const Dashboard: React.FC = () => {
 
         <div 
           className={cn(
-            "bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 delay-300",
+            "bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg overflow-hidden transition-all duration-700 delay-300",
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}
         >
-          <div className="border-b border-gray-200 bg-gray-50 px-6 py-5">
+          <div className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 px-6 py-5">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
                 <div key={index} className="flex items-center">
-                  <div className="rounded-full bg-white p-2 mr-3 shadow-sm">
+                  <div className="rounded-full bg-white dark:bg-gray-800 p-2 mr-3 shadow-sm">
                     {stat.icon}
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="text-sm text-gray-500">{stat.label}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="px-6 py-5">
+          <div className="px-6 py-5 dark:bg-gray-900">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Recent Detections</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Detections</h3>
               <BarChart3 className="h-5 w-5 text-gray-400" />
             </div>
             
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Content Title</TableHead>
-                    <TableHead>Platform</TableHead>
-                    <TableHead>Status</TableHead>
+                  <TableRow className="dark:border-gray-800">
+                    <TableHead className="dark:text-gray-400">ID</TableHead>
+                    <TableHead className="dark:text-gray-400">Content Title</TableHead>
+                    <TableHead className="dark:text-gray-400">Platform</TableHead>
+                    <TableHead className="dark:text-gray-400">Status</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {recentCases.map((item, index) => (
-                    <TableRow key={index} className="hover:bg-gray-50 transition-colors">
-                      <TableCell className="font-medium">{item.id}</TableCell>
-                      <TableCell>{item.title}</TableCell>
-                      <TableCell>{item.platform}</TableCell>
+                    <TableRow key={index} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors dark:border-gray-800">
+                      <TableCell className="font-medium dark:text-white">{item.id}</TableCell>
+                      <TableCell className="dark:text-gray-300">{item.title}</TableCell>
+                      <TableCell className="dark:text-gray-300">{item.platform}</TableCell>
                       <TableCell>
-                        <span className={`px-2 py-1 text-xs rounded-full ${item.statusColor}`}>
+                        <span className={`px-2 py-1 text-xs rounded-full ${item.statusColor} dark:bg-opacity-20`}>
                           {item.status}
                         </span>
                       </TableCell>
@@ -165,10 +165,10 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           
-          <div className="border-t border-gray-200 px-6 py-4 bg-gray-50">
+          <div className="border-t border-gray-200 dark:border-gray-800 px-6 py-4 bg-gray-50 dark:bg-gray-900">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-500">Showing 4 of 145 detections</span>
-              <Button variant="outline" size="sm" className="text-xs" asChild>
+              <span className="text-sm text-gray-500 dark:text-gray-400">Showing 4 of 145 detections</span>
+              <Button variant="outline" size="sm" className="text-xs dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800" asChild>
                 <Link to="/dashboard">
                   View All Detections
                   <ChevronRight className="ml-1 h-3 w-3" />
