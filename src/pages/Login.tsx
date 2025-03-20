@@ -1,12 +1,14 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield } from 'lucide-react';
+import { Shield, AlertCircle } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import MainLayout from '../layouts/MainLayout';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -17,9 +19,12 @@ const Login = () => {
   const [signupPassword, setSignupPassword] = useState('');
   const [signupName, setSignupName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetSent, setResetSent] = useState(false);
+  const [activeTab, setActiveTab] = useState('login');
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { signIn, signUp, session } = useAuth();
+  const { signIn, signUp, session, resetPassword } = useAuth();
 
   // Redirect if already logged in
   useEffect(() => {
@@ -50,6 +55,33 @@ const Login = () => {
     }
   };
 
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    try {
+      await resetPassword(resetEmail);
+      setResetSent(true);
+      toast({
+        title: "Password reset email sent",
+        description: "Please check your inbox for further instructions.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send reset email",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    setResetSent(false);
+  };
+
   return (
     <MainLayout>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
@@ -67,10 +99,11 @@ const Login = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Tabs defaultValue="login" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 mb-8">
+              <Tabs defaultValue={activeTab} value={activeTab} onValueChange={handleTabChange} className="w-full">
+                <TabsList className="grid w-full grid-cols-3 mb-8">
                   <TabsTrigger value="login">Login</TabsTrigger>
                   <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                  <TabsTrigger value="reset">Reset</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="login">
@@ -90,12 +123,14 @@ const Login = () => {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <Label htmlFor="login-password">Password</Label>
-                          <a 
-                            href="#" 
-                            className="text-sm text-piracy-600 dark:text-piracy-400 hover:underline"
+                          <Button 
+                            type="button" 
+                            variant="link" 
+                            className="text-sm text-piracy-600 dark:text-piracy-400 p-0 h-auto"
+                            onClick={() => setActiveTab('reset')}
                           >
                             Forgot password?
-                          </a>
+                          </Button>
                         </div>
                         <Input 
                           id="login-password"
@@ -152,6 +187,45 @@ const Login = () => {
                       </Button>
                     </div>
                   </form>
+                </TabsContent>
+                
+                <TabsContent value="reset">
+                  {resetSent ? (
+                    <Alert className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 mb-4">
+                      <AlertCircle className="h-4 w-4 text-green-700 dark:text-green-500" />
+                      <AlertDescription className="text-green-700 dark:text-green-500">
+                        Password reset link has been sent to your email.
+                        Please check your inbox and follow the instructions.
+                      </AlertDescription>
+                    </Alert>
+                  ) : (
+                    <form onSubmit={handleResetPassword}>
+                      <div className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="reset-email">Email</Label>
+                          <Input 
+                            id="reset-email"
+                            type="email" 
+                            placeholder="name@example.com" 
+                            value={resetEmail}
+                            onChange={(e) => setResetEmail(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <Button type="submit" className="w-full bg-piracy-600 hover:bg-piracy-700" disabled={isLoading}>
+                          {isLoading ? "Sending..." : "Send Reset Link"}
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          className="w-full mt-2"
+                          onClick={() => setActiveTab('login')}
+                        >
+                          Return to Login
+                        </Button>
+                      </div>
+                    </form>
+                  )}
                 </TabsContent>
               </Tabs>
             </CardContent>
