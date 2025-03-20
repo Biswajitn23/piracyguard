@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Shield, Globe, Zap } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { useInView } from '../utils/animations';
+import { Link } from 'react-router-dom';
 
 const EnterpriseSolutions: React.FC = () => {
   const { ref, isInView } = useInView();
@@ -21,6 +22,7 @@ const EnterpriseSolutions: React.FC = () => {
         "24/7 support"
       ],
       cta: "Get Started",
+      ctaLink: "/contact",
       popular: false
     },
     {
@@ -35,6 +37,7 @@ const EnterpriseSolutions: React.FC = () => {
         "Custom AI training"
       ],
       cta: "Get Started",
+      ctaLink: "/contact",
       popular: true
     },
     {
@@ -49,6 +52,7 @@ const EnterpriseSolutions: React.FC = () => {
         "Custom integration"
       ],
       cta: "Contact Sales",
+      ctaLink: "/contact",
       popular: false
     }
   ];
@@ -125,8 +129,9 @@ const EnterpriseSolutions: React.FC = () => {
                       ? "bg-purple-600 hover:bg-purple-700 text-white" 
                       : "bg-purple-900/50 hover:bg-purple-800 text-white border border-purple-600/30"
                   )}
+                  asChild
                 >
-                  {plan.cta}
+                  <Link to={plan.ctaLink}>{plan.cta}</Link>
                 </Button>
               </CardFooter>
             </Card>
