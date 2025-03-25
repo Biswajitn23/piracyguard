@@ -4,66 +4,108 @@
 
 **URL**: https://piracyguard.lovable.app/
 
-## How can I edit this code?
+# **Disney IP Protection - AI-Driven Anti-Piracy Solution**
 
-There are several ways of editing your application.
+## **📌 Overview**
+This project is an AI-powered anti-piracy system designed to protect Disney’s intellectual property from unauthorized distribution and cyber threats. Using **real-time monitoring, automated DMCA takedown requests, and predictive analytics**, this solution effectively detects, reports, and prevents piracy.
 
-**Use Lovable**
+## **🚀 Features**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aa1af718-17f7-457e-ae4b-cbcd742ad20b) and start prompting.
+### 🔍 **Real-Time Piracy Detection**
+- **AI-powered web scraping** scans piracy websites, torrents, and social media.
+- **AI-based image recognition** detects Disney logos, characters, and scenes in pirated content.
+- **Instant alerts** notify Disney about newly detected piracy cases.
 
-Changes made via Lovable will be committed automatically to this repo.
+### ⚡ **Automated DMCA Takedown Requests**
+- AI **automatically generates and submits** takedown notices to platforms hosting illegal content.
+- **Monitors takedown status** and resends requests if necessary.
+- Reduces legal workload and **removes pirated content faster**.
 
-**Use your preferred IDE**
+### 🔮 **Predictive Analytics & Threat Prevention**
+- Uses **machine learning to predict piracy trends** before they escalate.
+- Identifies **high-risk platforms and regions** for preventive action.
+- Helps allocate resources **more efficiently** to combat piracy.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🌍 **Scalable & Efficient Monitoring**
+- Tracks **thousands of piracy sources simultaneously**.
+- Operates **24/7** without manual intervention.
+- Scans **illegal streaming services, Telegram groups, Discord servers, and other piracy hubs**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## **🛠️ Tech Stack**
+- **Frontend:** Vite + React + Tailwind CSS
+- **Backend:** Node.js + Express
+- **Database:** Supabase (PostgreSQL)
+- **AI/ML:** Python (TensorFlow, OpenCV, Scikit-learn)
+- **Web Scraping:** BeautifulSoup, Scrapy
+- **Cloud Storage:** Supabase Storage
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## **📂 Project Structure**
+```
+├── public
+├── src
+│   ├── components        # UI components
+│   ├── pages             # React pages
+│   ├── hooks             # Custom React hooks
+│   ├── utils             # Utility functions
+│   ├── services          # API calls and backend interactions
+│
+├── supabase              # Supabase configuration
+│   ├── database.sql      # Database schema
+│   ├── auth.js           # Authentication setup
+│
+├── index.html            # Main HTML entry point
+├── package.json          # Project dependencies
+├── tailwind.config.ts    # Tailwind CSS configuration
+├── vite.config.ts        # Vite configuration
+├── README.md             # Project documentation
 ```
 
-**Edit a file directly in GitHub**
+## **⚙️ Installation & Setup**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/disney-anti-piracy.git
+   cd disney-anti-piracy
+   ```
 
-**Use GitHub Codespaces**
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Set Up Supabase**
+   - Create a **Supabase project** at [supabase.com](https://supabase.com/).
+   - Copy your **Supabase API keys** into an `.env` file:
+   ```
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_anon_key
+   ```
 
-## What technologies are used for this project?
+4. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+   - The app will be available at **http://localhost:5173**.
 
-This project is built with .
+5. **Start the Backend Server** (if using a separate API service)
+   ```bash
+   npm run server
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## **📜 License**
+This project is licensed under the **MIT License** – feel free to use and modify it for educational and research purposes.
 
-## How can I deploy this project?
+## **🤝 Contributing**
+We welcome contributions! If you’d like to improve this project, feel free to **fork the repository, make changes, and submit a pull request**.
 
-Simply open [Lovable](https://lovable.dev/projects/aa1af718-17f7-457e-ae4b-cbcd742ad20b) and click on Share -> Publish.
+## **📬 Contact**
+For any queries or suggestions, reach out via:
+- ✉️ Email: nbiswajit978@gmail.com
+- 📸 Instagram: [@biswajitgotnochill](https://instagram.com/biswajitgotnochill)
+- 🔗 LinkedIn: [Biswajit Nayak](https://www.linkedin.com/in/biswajit-nayak-9a0b97321)
 
-## I want to use a custom domain - is that possible?
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+
+
+
+
