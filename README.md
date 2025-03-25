@@ -64,8 +64,7 @@ This project is an AI-powered anti-piracy system designed to protect Disney’s 
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/disney-anti-piracy.git
-   cd disney-anti-piracy
+   git clone https://github.com/Biswajitn23/piracyguard
    ```
 
 2. **Install Dependencies**
