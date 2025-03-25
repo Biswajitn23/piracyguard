@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/aa1af718-17f7-457e-ae4b-cbcd742ad20b
+**URL**: https://piracyguard.lovable.app/
 
 ## How can I edit this code?
 
