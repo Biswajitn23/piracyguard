@@ -75,13 +75,10 @@ This project is an AI-powered anti-piracy system designed to protect Disney’s 
 3. **Set Up Supabase**
    - Create a **Supabase project** at [supabase.com](https://supabase.com/).
    - Copy your **Supabase API keys** into an `.env` file:
-
- Paste the following inside:
-
+```bash
 VITE_SUPABASE_URL=https://pewhgvvxbkquqlzpsibv.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBld2hndnZ4YmtxdXFsenBzaWJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5ODM2MjMsImV4cCI6MjA1NzU1OTYyM30.OzvVOwMJBgSTiSiBGyfwkgiVkiaHZWuu8jhr9ns4Gs4
-
-
+```
 
 4. **Run the Development Server**
    ```bash
