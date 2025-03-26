@@ -76,7 +76,7 @@ This project is an AI-powered anti-piracy system designed to protect Disney’s 
    - Create a **Supabase project** at [supabase.com](https://supabase.com/).
    - Copy your **Supabase API keys** into an `.env` file:
    ```
-   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_URL=https://pewhgvvxbkquqlzpsibv.supabase.co
    VITE_SUPABASE_ANON_KEY=your_anon_key
    ```
 
